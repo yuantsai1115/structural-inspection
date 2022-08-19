@@ -17,6 +17,7 @@ import {
 } from '@mui/material';
 import { StructuralData, isStructuralData } from '../../interfaces/structuralData.interface';
 import { downloadBlob, dataToReport, blobToDataURL, parseJsonFile } from './../../services/Docx/docx.service';
+import { generateReport } from './GenerateStructuralReportHelper';
 import { ResetTvOutlined } from '@mui/icons-material';
 
 const GenerateStructuralReport: FC<any> = (): ReactElement => {
@@ -51,8 +52,17 @@ const GenerateStructuralReport: FC<any> = (): ReactElement => {
 
             setShowProgress(true);
             setIsButtonDisabled(true);
-            setShowProgress(false);
-            setIsButtonDisabled(false);
+            await generateReport(
+                data,
+                () => {
+                    setShowProgress(false);
+                    setIsButtonDisabled(false);
+                },
+                (errorMessage: string) => {
+                    console.log(errorMessage);
+                    setErrorMessage(errorMessage);
+                },
+            );
         }
     };
 

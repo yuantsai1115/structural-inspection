@@ -1,5 +1,8 @@
-import createReport from 'docx-templates';
-global.Buffer = global.Buffer || require('buffer').Buffer;
+//import createReport from 'docx-templates';
+//import { createReport } from 'https://unpkg.com/docx-templates/lib/browser.js';
+import { createReport } from './docx-templates@4.9.2/lib/browser.js';
+
+//global.Buffer = global.Buffer || require('buffer').Buffer;
 
 export const downloadBlob = (filename, content, mimeType, callback) => {
     const blob = new Blob([content], { type: mimeType });
@@ -16,11 +19,13 @@ export const downloadBlob = (filename, content, mimeType, callback) => {
     callback();
 };
 
-export const dataToReport = async (data, template) => {
+export const dataToReport = async (structuralData, template) => {
+    console.log('DATA TO REPORT');
+    console.log(structuralData);
     const report = await createReport({
         template,
         data: {
-            data: data,
+            structuralData: structuralData,
         },
         additionalJsContext: {
             imageData: (dataUrl, imageRatio, h) => {

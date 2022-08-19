@@ -36,6 +36,7 @@ export interface StructuralData {
     Cover: number;
     RebarRatio: number;
     Image64: string;
+    Image64Ratio?: number;
 }
 
 export const isStructuralData = (data: object) => {
