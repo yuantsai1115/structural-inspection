@@ -81,7 +81,7 @@ const GenerateStructuralReport: FC<any> = (): ReactElement => {
                 <Card sx={{ minWidth: 350 }}>
                     <CardContent>
                         <FormControl component="fieldset">
-                            <FormLabel component="legend">鋼筋查驗檔案：</FormLabel>
+                            <FormLabel component="legend">製作鋼筋查驗檔案：</FormLabel>
 
                             <label htmlFor="contained-button-file">
                                 <input
@@ -122,6 +122,20 @@ const GenerateStructuralReport: FC<any> = (): ReactElement => {
                         )}
                     </CardContent>
                 </Card>
+
+                <Box mt={2} ml={2}>
+                    <Typography variant="caption" color="text.secondary">
+                        範例樣板下載：
+                    </Typography>
+                    <Typography variant="caption">
+                        <Box>
+                            <a href={`${process.env.PUBLIC_URL}/samples/RC_Column_Design_Data copy.json`}> Tekla柱鋼筋匯出檔(.json) </a>
+                        </Box>
+                        <Box>
+                            <a href={`${process.env.PUBLIC_URL}/templates/column_rebar_data.docx`}> 柱筋查驗報告樣板 </a>
+                        </Box>
+                    </Typography>
+                </Box>
             </Box>
         </>
     );
