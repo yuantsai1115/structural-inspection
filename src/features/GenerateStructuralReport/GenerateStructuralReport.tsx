@@ -15,15 +15,11 @@ import {
     RadioGroup,
     Stack,
 } from '@mui/material';
-import ModelService from '../../services/Model/model.service';
-
-const FILE_SIZE_LIMIT = 50; //MB
+import { StructuralData, isStructuralData } from '../../interfaces/structuralData.interface';
+import { downloadBlob, dataToReport, blobToDataURL, parseJsonFile } from './../../services/Docx/docx.service';
+import { ResetTvOutlined } from '@mui/icons-material';
 
 const GenerateStructuralReport: FC<any> = (): ReactElement => {
-    const handleRevitVersionChange = (e: React.FormEvent<HTMLInputElement>) => {
-        console.log(e.currentTarget.value);
-    };
-
     const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true);
     const [showProgress, setShowProgress] = useState<boolean>(false);
     const [selectedFile, setSelectedFile] = useState<File>();
@@ -38,44 +34,48 @@ const GenerateStructuralReport: FC<any> = (): ReactElement => {
         console.log(fileList[0]);
     };
 
-    const [workItemId, setWorkItemId] = useState<string>();
     const [errorMessage, setErrorMessage] = useState<string>('');
-
     const clearMessage = () => {
         setErrorMessage('');
     };
-    const handleUploadClicked = (i: number) => async (e: React.MouseEvent<HTMLElement>) => {
+    const handleProcessClicked = (i: number) => async (e: React.MouseEvent<HTMLElement>) => {
         // console.log(i);
         clearMessage();
+
+        let data = await Promise.resolve().then(r => parseJsonFile(selectedFile));
         if (!!selectedFile) {
-            if (selectedFile.size > FILE_SIZE_LIMIT * 1024 * 1024) {
-                setErrorMessage(`檔案過大，請上傳小於 ${FILE_SIZE_LIMIT} MB 的模型`);
+            if (!isSelectedFilePassed(data)) {
+                setErrorMessage(`檔案有誤，請再確認。`);
                 return;
             }
 
             setShowProgress(true);
             setIsButtonDisabled(true);
-            let data = await ModelService.uploadModel(selectedFile);
-            console.log(data);
-
-            setWorkItemId(data._id);
             setShowProgress(false);
             setIsButtonDisabled(false);
         }
     };
 
+    const isSelectedFilePassed = (data: any) => {
+        if (!Array.isArray(data)) return false;
+        let result = true;
+        data.map(d => {
+            if (!isStructuralData(d)) result = false;
+        });
+        return result;
+    };
+
     return (
         <>
             <Box>
-                {/* <Typography variant="h3">JoinElements</Typography> */}
                 <Card sx={{ minWidth: 350 }}>
                     <CardContent>
                         <FormControl component="fieldset">
-                            <FormLabel component="legend">選擇要接合的Revit模型：</FormLabel>
+                            <FormLabel component="legend">鋼筋查驗檔案：</FormLabel>
 
                             <label htmlFor="contained-button-file">
                                 <input
-                                    accept=".rvt"
+                                    accept=".json"
                                     style={{ display: 'none' }}
                                     id="contained-button-file"
                                     type="file"
@@ -97,33 +97,10 @@ const GenerateStructuralReport: FC<any> = (): ReactElement => {
                             ) : (
                                 <></>
                             )}
-                            <Button disabled={isButtonDisabled} variant="contained" style={{ color: 'white' }} onClick={handleUploadClicked(1)}>
-                                上傳
+                            <Button disabled={isButtonDisabled} variant="contained" style={{ color: 'white' }} onClick={handleProcessClicked(1)}>
+                                製作
                             </Button>
                         </Box>
-                        {!!workItemId ? (
-                            <>
-                                <Divider sx={{ my: '20px' }} />
-                                <Box sx={{ justifyContent: 'center', verticalAlign: 'center' }}>
-                                    <Typography variant="body2" color="gray" textAlign="center">
-                                        案件編號
-                                    </Typography>
-                                    <Box textAlign="center">
-                                        <Chip label={workItemId} variant="outlined" color="secondary" size="medium" />
-                                    </Box>
-                                    <Box sx={{ my: '20px' }}>
-                                        <Typography variant="body2" color="gray" textAlign="center">
-                                            請勿遺失案件編號!
-                                        </Typography>
-                                        <Typography variant="caption" color="gray" textAlign="center">
-                                            案件編號用來查詢模型接合進度，若遺失請重新上傳模型。
-                                        </Typography>
-                                    </Box>
-                                </Box>
-                            </>
-                        ) : (
-                            <></>
-                        )}
                         {errorMessage.length > 0 ? (
                             <Box sx={{ mt: '5px' }} component={Stack} direction="column" justifyContent="center">
                                 <Typography variant="body2" color="error.main">
