@@ -2,7 +2,6 @@
 import Login from './features/Auth/Login';
 import Signup from './features/Auth/Signup';
 import NotFound from './features/NotFound';
-import JoinElements from './features/JoinElements';
 import MainLayout from './features/Layouts/MainLayout';
 
 // other
