@@ -8,7 +8,9 @@ export const generateReport = async (structuralData: Array<StructuralData>, call
     reader.onload = async () => {
         let template = reader.result;
         structuralData = structuralData.map(d => {
-            d.Image64 = d.Image64.includes('data:image/png;base64,') ? d.Image64 : `data:image/png;base64,${d.Image64}`;
+            if (!d.Image64) return d;
+
+            d.Image64 = d.Image64.startsWith('data:image') ? d.Image64 : `data:image/png;base64,${d.Image64}`;
             const img = new Image();
             img.src = d.Image64;
             document.body.appendChild(img);
