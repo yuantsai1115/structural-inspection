@@ -3,7 +3,7 @@ import { downloadBlob, dataToReport, blobToDataURL, parseJsonFile } from './../.
 
 export const generateReport = async (structuralData: Array<StructuralData>, callback: Function, onError: Function) => {
     const reader = new FileReader();
-    let templateFile = await fetch(`${process.env.PUBLIC_URL}/templates/column_rebar_data.docx`).then(r => r.blob());
+    let templateFile = await fetch(`${process.env.PUBLIC_URL}/templates/column_rebar_template.docs`).then(r => r.blob());
 
     reader.onload = async () => {
         let template = reader.result;

@@ -132,7 +132,7 @@ const GenerateStructuralReport: FC<any> = (): ReactElement => {
                             <a href={`${process.env.PUBLIC_URL}/samples/RC_Column_Design_Data copy.json`}> Tekla柱鋼筋匯出檔(.json) </a>
                         </Box>
                         <Box>
-                            <a href={`${process.env.PUBLIC_URL}/templates/column_rebar_data.docx`}> 柱筋查驗報告樣板 </a>
+                            <a href={`${process.env.PUBLIC_URL}/templates/column_rebar_template.docs`}> 柱筋查驗報告樣板 </a>
                         </Box>
                     </Typography>
                 </Box>
