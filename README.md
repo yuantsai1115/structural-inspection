@@ -1,46 +1,34 @@
-# Getting Started with Create React App
+# Rebar Inspection Sheet Generating Tool
+A web-based building information model (BIM) viewer for safety training on construction site. The viewer is powered by bimU Viewer APIs.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Safety Training.mp4](https://user-images.githubusercontent.com/119405090/218034217-39391de8-3ff6-430e-85fa-f850ab60ead1.mp4)
 
-## Available Scripts
+## Features
+- Easily switch to your own BIM models
+- Provide images and specification for each critical area
+- Highlight BIM elements with animation for each critical area
 
-In the project directory, you can run:
+## Live Demo
+Main branch is deployed to https://safety-education.netlify.app/.
 
-### `npm start`
+## Project Setup
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Rules for Element Properties
+1. 4 custom fields for all elements in BIM models including 勞安_法規內容, 勞安_法規編號, 勞安_法規圖片, 勞安_法規影片.
+2. Seperate by '@' for multiple rules in the same element (applied to all fields).
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![模型元件填入資料說明](https://user-images.githubusercontent.com/119405090/218041642-e19c1a92-b64b-4db2-adf9-91e41863ae35.png)
 
-### `npm test`
+### Prerequisites
+- BIM model uploaded to [bimU Viewer](https://viewer.bimu.io)
+- `model id` from bimU Viewer
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Setup
+- clone this repository
+- install dependencies: `npm install`
+- run server: `npm start`
+- go to http://localhost:3000
+    - add url parameter `modelId` to specify your own model
+    - add url parameter `imgFolder` for the name of image folder accommdated the training materials (same as the name in the public folder of repo)
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Enjoy :metal:
