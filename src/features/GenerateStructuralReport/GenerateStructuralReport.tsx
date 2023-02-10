@@ -81,7 +81,7 @@ const GenerateStructuralReport: FC<any> = (): ReactElement => {
                 <Card sx={{ minWidth: 350 }}>
                     <CardContent>
                         <FormControl component="fieldset">
-                            <FormLabel component="legend">製作鋼筋查驗檔案：</FormLabel>
+                            <FormLabel component="legend">Rebar Inspection Sheet:</FormLabel>
 
                             <label htmlFor="contained-button-file">
                                 <input
@@ -92,7 +92,7 @@ const GenerateStructuralReport: FC<any> = (): ReactElement => {
                                     onChange={handleFileSelected}
                                 />
                                 <Button variant="text" component="span" style={{ marginRight: '8px' }}>
-                                    選擇檔案
+                                    Select
                                 </Button>
                                 <Typography variant="caption" display="inline" gutterBottom>
                                     {selectedFile?.name}
@@ -108,7 +108,7 @@ const GenerateStructuralReport: FC<any> = (): ReactElement => {
                                 <></>
                             )}
                             <Button disabled={isButtonDisabled} variant="contained" style={{ color: 'white' }} onClick={handleProcessClicked(1)}>
-                                製作
+                                Generate
                             </Button>
                         </Box>
                         {errorMessage.length > 0 ? (
@@ -125,14 +125,20 @@ const GenerateStructuralReport: FC<any> = (): ReactElement => {
 
                 <Box mt={2} ml={2}>
                     <Typography variant="caption" color="text.secondary">
-                        範例樣板下載：
+                        Sample Files：
                     </Typography>
                     <Typography variant="caption">
                         <Box>
-                            <a href={`${process.env.PUBLIC_URL}/samples/RC_Column_Design_Data copy.json`}> Tekla柱鋼筋匯出檔(.json) </a>
+                            <a href={`${process.env.PUBLIC_URL}/samples/RC_Column_Design_Data copy.json`}>
+                                {' '}
+                                RC Column Design Data from Tekla (.json){' '}
+                            </a>
                         </Box>
                         <Box>
-                            <a href={`${process.env.PUBLIC_URL}/templates/column_rebar_template.docx`}> 柱筋查驗報告樣板 </a>
+                            <a href={`${process.env.PUBLIC_URL}/templates/column_rebar_template.docx`}>
+                                {' '}
+                                Rebar inspection sheet for RC Column (.docx){' '}
+                            </a>
                         </Box>
                     </Typography>
                 </Box>

@@ -7,12 +7,12 @@ const MainLayout: FC<any> = (): ReactElement<any> => {
         <>
             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '24px' }}>
                 <Typography variant="h4" component="div">
-                    施工品管監造
+                    Rebar Quality Control
                 </Typography>
             </Box>
             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '18px' }}>
                 <Typography variant="h6" gutterBottom component="div">
-                    製作鋼筋查驗單
+                    Generate rebar inspection sheet
                 </Typography>
             </Box>
             <Box
