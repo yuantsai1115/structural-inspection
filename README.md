@@ -1,7 +1,7 @@
 # Rebar Inspection Sheet Generating Tool
 A web-based building information model (BIM) viewer for safety training on construction site. The viewer is powered by bimU Viewer APIs.
 
-[Safety Training.mp4](https://user-images.githubusercontent.com/119405090/218034217-39391de8-3ff6-430e-85fa-f850ab60ead1.mp4)
+[Rebar Inspection Sheet Generating.mp4](https://user-images.githubusercontent.com/119405090/218063414-3f433d85-748e-4956-b70f-f4609babdd0e.mp4)
 
 ## Features
 - Easily switch to your own BIM models
