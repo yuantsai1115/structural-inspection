@@ -9,7 +9,7 @@ A web-based building information model (BIM) viewer for safety training on const
 - Highlight BIM elements with animation for each critical area
 
 ## Live Demo
-Main branch is deployed to https://safety-education.netlify.app/.
+Main branch is deployed to https://structural-inspection.netlify.app/.
 
 ## Project Setup
 
