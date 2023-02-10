@@ -137,7 +137,7 @@ const GenerateStructuralReport: FC<any> = (): ReactElement => {
                         <Box>
                             <a href={`${process.env.PUBLIC_URL}/templates/column_rebar_template.docx`}>
                                 {' '}
-                                Rebar inspection sheet for RC Column (.docx){' '}
+                                Rebar inspection sheet for RC Column (.docx){'  '}
                             </a>
                         </Box>
                     </Typography>
