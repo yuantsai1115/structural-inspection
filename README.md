@@ -3,13 +3,13 @@ A web-based tool for generating sheets for onsite rebar inspection. It speeds up
 
 [Rebar Inspection Sheet Generating.mp4](https://user-images.githubusercontent.com/119405090/218063414-3f433d85-748e-4956-b70f-f4609babdd0e.mp4)
 
+## Live Demo
+Main branch is deployed to https://structural-inspection.netlify.app/.
+
 ## Features
 - Generating inspection sheet from BIM model
 - Costomisable Word template
 - No installation needed
-
-## Live Demo
-Main branch is deployed to https://structural-inspection.netlify.app/.
 
 ## Project Setup
 ### Prerequisites
