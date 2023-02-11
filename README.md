@@ -12,10 +12,13 @@ A web-based tool for generating sheets for onsite rebar inspection. It speeds up
 Main branch is deployed to https://structural-inspection.netlify.app/.
 
 ## Project Setup
+### Prerequisites
+- Node.js v16 and above
+
 ### Setup
 - clone this repository
-- install dependencies: `npm install`
-- run server: `npm start`
+- install dependencies: `yarn install`
+- run server: `yarn start`
 - go to http://localhost:3000
 
 Enjoy :metal:
